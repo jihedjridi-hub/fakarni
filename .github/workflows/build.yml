@@ -1,0 +1,23 @@
+# Checks that the app compiles, on every push. No Apple account or secrets needed.
+name: Build check
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        run: |
+          echo "GOOGLE_MAPS_API_KEY = ${{ secrets.GOOGLE_MAPS_API_KEY || 'missing' }}" > Config/Secrets.xcconfig
+          xcodegen
+      - name: Build for simulator
+        run: |
+          xcodebuild -project LocationReminders.xcodeproj -scheme LocationReminders \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build | tee build.log | grep -E "error:|warning:|BUILD" || true
+          grep -q "BUILD SUCCEEDED" build.log

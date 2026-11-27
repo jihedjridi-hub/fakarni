@@ -1,0 +1,44 @@
+# Builds a signed app and uploads it to TestFlight, so you can install it on your iPhone.
+# Run it from the Actions tab ("Run workflow"). Needs the secrets listed in README.md.
+name: TestFlight
+on:
+  workflow_dispatch:
+jobs:
+  testflight:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate Xcode project
+        run: |
+          echo "GOOGLE_MAPS_API_KEY = ${{ secrets.GOOGLE_MAPS_API_KEY }}" > Config/Secrets.xcconfig
+          xcodegen
+      - name: Write App Store Connect key
+        run: |
+          mkdir -p ~/private_keys
+          echo "${{ secrets.ASC_KEY_P8_BASE64 }}" | base64 --decode > ~/private_keys/AuthKey.p8
+      - name: Archive
+        run: |
+          xcodebuild -project LocationReminders.xcodeproj -scheme LocationReminders \
+            -configuration Release -destination 'generic/platform=iOS' \
+            -archivePath build/LocationReminders.xcarchive \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/private_keys/AuthKey.p8 \
+            -authenticationKeyID "${{ secrets.ASC_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.ASC_ISSUER_ID }}" \
+            DEVELOPMENT_TEAM="${{ secrets.APPLE_TEAM_ID }}" \
+            PRODUCT_BUNDLE_IDENTIFIER="${{ vars.BUNDLE_ID || 'com.example.locationreminders' }}" \
+            CURRENT_PROJECT_VERSION="${{ github.run_number }}" \
+            archive
+      - name: Upload to TestFlight
+        run: |
+          sed "s/TEAM_ID/${{ secrets.APPLE_TEAM_ID }}/" ci/ExportOptions.plist > build/ExportOptions.plist
+          xcodebuild -exportArchive \
+            -archivePath build/LocationReminders.xcarchive \
+            -exportOptionsPlist build/ExportOptions.plist \
+            -exportPath build/export \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath ~/private_keys/AuthKey.p8 \
+            -authenticationKeyID "${{ secrets.ASC_KEY_ID }}" \
+            -authenticationKeyIssuerID "${{ secrets.ASC_ISSUER_ID }}"
