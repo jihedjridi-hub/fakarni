@@ -1,0 +1,30 @@
+11-27 16:04:16.027   517   517 W DefaultPermGrantPolicy: Permission not found: com.google.android.apps.gmm.dev.permission.ASSISTANT_GRPC_SYNC
+11-27 16:04:16.027   517   517 W DefaultPermGrantPolicy: Permission not found: com.google.android.apps.gmm.dogfood.permission.ASSISTANT_GRPC_SYNC
+11-27 16:04:16.027   517   517 W DefaultPermGrantPolicy: Permission not found: com.google.android.apps.gmm.fishfood.permission.ASSISTANT_GRPC_SYNC
+11-27 16:04:16.027   517   517 W DefaultPermGrantPolicy: Permission not found: com.google.android.apps.gmm.permission.ASSISTANT_GRPC_SYNC
+11-27 16:04:16.027   517   517 W DefaultPermGrantPolicy: Permission not found: com.google.android.apps.gmm.qp.permission.ASSISTANT_GRPC_SYNC
+11-27 16:04:16.823   156   168 I keystore2: system/security/keystore2/src/authorization.rs:143 - on_lock_screen_event(r#UNLOCK, user_id=0, password.is_some()=false, unlocking_sids=Some([]))
+11-27 16:04:25.257   517   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.maps/com.google.android.apps.gmm.widget.SearchWidgetProvider} won't be persisted.
+11-27 16:04:25.257   517   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.maps/com.google.android.apps.gmm.widget.traffic.TrafficWidgetProvider} won't be persisted.
+11-27 16:04:26.286   517   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.maps/com.google.android.apps.gmm.widget.SearchWidgetProvider} won't be persisted.
+11-27 16:04:26.286   517   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.maps/com.google.android.apps.gmm.widget.traffic.TrafficWidgetProvider} won't be persisted.
+11-27 16:04:26.380   517   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.maps/com.google.android.apps.gmm.widget.SearchWidgetProvider} won't be persisted.
+11-27 16:04:26.380   517   546 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.google.android.apps.maps/com.google.android.apps.gmm.widget.traffic.TrafficWidgetProvider} won't be persisted.
+11-27 16:04:30.678  2957  2957 D MapsInitializer: preferredRenderer: null
+11-27 16:04:32.118  2957  2957 I Google Maps Android API: Google Play services client version: 19000000
+11-27 16:04:32.157  2957  2957 I Google Maps Android API: Google Play services package version: 231818047
+11-27 16:04:32.157  2957  2957 I Google Maps Android API: Google Play services maps renderer version(legacy): 203115000
+11-27 16:04:32.626  2957  2957 D MapsInitializer: loadedRenderer: LEGACY
+11-27 16:04:32.633  2957  2957 I Google Maps Android API: Google Play services package version: 231818047
+11-27 16:04:32.633  2957  2957 I Google Maps Android API: Google Play services maps renderer version(legacy): 203115000
+11-27 16:04:57.231  2957  2957 W com.fakarni.app: Long monitor contention with owner GLThread 66 (3398) at void com.google.maps.api.android.lib6.gmm6.vector.v.s(com.google.maps.api.android.lib6.gmm6.vector.gl.g, com.google.maps.api.android.lib6.gmm6.vector.camera.b, com.google.maps.api.android.lib6.gmm6.vector.br)(:com.google.android.gms.dynamite_mapsdynamite@231818047@23.18.18 (190800-0):10) waiters=0 in void com.google.maps.api.android.lib6.gmm6.vector.v.v() for 474ms
+11-27 16:05:22.058  1589  3695 I Google Maps Android API: Validating conditions for requesting maps_core feature. [CONTEXT service_id=71 ]
+11-27 16:05:22.058  1589  3695 I Google Maps Android API: Is maps_core feature installed? 1 [CONTEXT service_id=71 ]
+11-27 16:05:22.058  1589  3695 I Google Maps Android API: cutoffSize=2147483648, internalFreeBytes=5328052224
+11-27 16:05:22.058  1589  3695 I Google Maps Android API: Eligible to request maps_core feature. [CONTEXT service_id=71 ]
+11-27 16:05:22.434  1589  3695 I Google Maps Android API: maps_core feature request succeeded. [CONTEXT service_id=71 ]
+11-27 16:05:30.072  1589  4519 I Google Maps Android API: Validating conditions for requesting maps_core feature. [CONTEXT service_id=71 ]
+11-27 16:05:30.072  1589  4519 I Google Maps Android API: Is maps_core feature installed? 1 [CONTEXT service_id=71 ]
+11-27 16:05:30.072  1589  4519 I Google Maps Android API: cutoffSize=2147483648, internalFreeBytes=5323038720
+11-27 16:05:30.072  1589  4519 I Google Maps Android API: Eligible to request maps_core feature. [CONTEXT service_id=71 ]
+11-27 16:05:30.081  1589  4519 I Google Maps Android API: maps_core feature request succeeded. [CONTEXT service_id=71 ]
