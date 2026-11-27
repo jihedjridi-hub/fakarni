@@ -23,6 +23,8 @@ import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.*
 import androidx.compose.ui.platform.LocalContext
+import com.google.android.gms.maps.CameraUpdateFactory
+import kotlinx.coroutines.launch
 import kotlin.math.*
 
 private const val MIN_RADIUS = 50.0
@@ -33,6 +35,7 @@ private const val MAX_RADIUS = 2000.0
 @Composable
 fun MapScreen(store: ReminderStore, geofences: GeofenceManager) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     val reminders by store.reminders.collectAsStateWithLifecycle()
     val perms = rememberPermissionState(geofences) { geofences.sync(store.all()) }
 
@@ -73,7 +76,13 @@ fun MapScreen(store: ReminderStore, geofences: GeofenceManager) {
             cameraPositionState = camera,
             properties = MapProperties(isMyLocationEnabled = perms.foreground),
             uiSettings = MapUiSettings(myLocationButtonEnabled = perms.foreground, zoomControlsEnabled = false),
-            onMapClick = { draftCenter = it },
+            onMapClick = { tapped ->
+                draftCenter = tapped
+                // Zoom in on the chosen place so the circle is easy to see and adjust.
+                scope.launch {
+                    camera.animate(CameraUpdateFactory.newLatLngZoom(tapped, max(camera.position.zoom, 16f)), 600)
+                }
+            },
         ) {
             reminders.forEach { r ->
                 val color = if (r.enabled) Color(0xFFFF9500) else Color.Gray

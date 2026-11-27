@@ -36,7 +36,7 @@ shot 2-circle 6
 tap_text "Next"
 sleep 2
 tap_text "What should I remind you"
-adb shell input text "Buy%sbread"
+adb shell input text "Buy%sbread"; sleep 3
 adb shell input keyevent 111   # hide keyboard (ESC)
 sleep 1
 tap_text "Only between certain hours" $((W - 120))
