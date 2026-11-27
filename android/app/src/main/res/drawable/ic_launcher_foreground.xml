@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <!-- circle (the reminder area) -->
+    <path android:fillColor="#6EA0FA" android:strokeColor="#FFFFFF" android:strokeWidth="2.5"
+        android:pathData="M54,22a28,28 0,1 1,0 56a28,28 0,1 1,0 -56z" />
+    <!-- pin -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,34c-7.2,0 -13,5.8 -13,13c0,9.8 13,22 13,22s13,-12.2 13,-22c0,-7.2 -5.8,-13 -13,-13zM54,52a5,5 0,1 1,0 -10a5,5 0,1 1,0 10z" />
+</vector>

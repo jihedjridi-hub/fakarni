@@ -1,6 +1,15 @@
-Config/Secrets.xcconfig
+# iOS
+ios/Config/Secrets.xcconfig
 *.xcodeproj/
 xcuserdata/
 DerivedData/
 .DS_Store
 .build/
+# Android
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+*.iml
+*.keystore

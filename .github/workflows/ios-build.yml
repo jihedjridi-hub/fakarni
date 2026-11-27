@@ -1,12 +1,13 @@
 # Checks that the app compiles, on every push. No Apple account or secrets needed.
-name: Build check
+name: iOS build check
 on:
-  push:
-  pull_request:
-  workflow_dispatch:
+  workflow_dispatch:   # iOS is paused; run by hand from the Actions tab
 jobs:
   build:
     runs-on: macos-15-intel   # arm64 Macs were full twice; Intel ones are usually free
+    defaults:
+      run:
+        working-directory: ios
     steps:
       - uses: actions/checkout@v4
       - name: Install XcodeGen
