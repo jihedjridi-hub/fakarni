@@ -27,11 +27,11 @@ adb install -g "$APK"
 adb shell pm grant com.fakarni.app android.permission.ACCESS_BACKGROUND_LOCATION || true
 adb shell settings put system screen_off_timeout 600000
 adb shell am start -n com.fakarni.app/.MainActivity
-shot 1-map 12
+shot 1-map 25
 
 read W H < <(adb shell wm size | grep -o '[0-9]*x[0-9]*' | tail -1 | tr x ' ')
 adb shell input tap $((W/2)) $((H/2 - 150))
-shot 2-circle 3
+shot 2-circle 6
 
 tap_text "Next"
 sleep 2
