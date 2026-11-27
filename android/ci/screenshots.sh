@@ -47,3 +47,6 @@ shot 4-saved 3
 
 tap_text "Reminders"
 shot 5-list 3
+
+# Keep the Google Maps messages, to diagnose a blank map (bad key, API not enabled, etc.)
+adb logcat -d | grep -iE "Google Maps|Authorization|API key|API_KEY|maps_api|MapsInitializer|gmm|Ensure that the" > "$OUT/maps-log.txt" || true
